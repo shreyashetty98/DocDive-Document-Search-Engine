@@ -1,0 +1,321 @@
+body {
+    position: relative; /* This makes the body container for the absolute positioned pseudo-element */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 0; 
+    background-color: #f2f2f2;
+    text-align: center;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100vh;
+}
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('DocDive.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(5px); /* Adjust the px value to increase or decrease the blur effect */
+    -webkit-backdrop-filter: blur(1px); /* For Safari compatibility */
+    z-index: -1;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex: 1;
+}
+#logo {
+    display: block; /* Ensures the image is on its own line */
+    margin: 0 auto; /* Centers the image */
+    max-width: 60%; /* Ensures the image is responsive and fits the container */
+    height: 60%; /* Maintains the aspect ratio of the image */
+}
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+#searchResults {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+            left: 0;
+            background-color: #162346;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 20px 20px 20px 32px;
+            text-decoration: none;
+            text-align: left;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #162346;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            position: absolute; /* Position the button */
+            top: 10px; /* Adjust top position */
+            left: 10px;
+        }
+
+        .openbtn:hover {
+            background-color: #444;
+        }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        @media screen and (max-height: 450px) {
+            .sidebar {padding-top: 15px;}
+            .sidebar a {font-size: 18px;}
+        }
+        .search-option {
+            flex: 2;
+            padding: 20px;
+            justify-content: center; /* Center content horizontally */
+            align-items: center;
+            margin-top: -60px;
+        }
+/* Add this to your style.css file */
+.search-bar {
+    text-align: center;
+  color: #2c3e50;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  transition: all 0.5s;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.finder {
+  border: 1px solid #162346;
+  background-color: #f6f5f0;
+  border-radius: 15px;
+  padding: 8px;
+  box-shadow: 9px 9px 16px rgba(189, 189, 189, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.finder__outer {
+  display: flex;
+  width: 500px;
+  height: 30px;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: inset 10px 10px 15px -10px #9793b8,
+    inset -10px -10px 15px -10px #9793b8;
+}
+
+.finder__inner {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.finder__form {
+  flex: 1;
+  height: calc(100% + 3rem);
+}
+
+.finder__input {
+  height: calc 100%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 1rem;
+  letter-spacing: 0.75px;
+}
+
+.finder__icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 0.5rem;
+  transition: all 0.2s;
+  box-shadow: inset 0 0 0 20px #292929;
+  border-radius: 50%;
+  position: relative;
+
+  &:after,
+  &:before {
+    display: block;
+    content: "";
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  &:after {
+    width: 10px;
+    height: 10px;
+    background-color: #292929;
+    border: 3px solid #f6f5f0;
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    left: 0px;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+
+    @at-root .active & {
+      border-width: 10px;
+      background-color: #f6f5f0;
+    }
+  }
+
+  &:before {
+    width: 4px;
+    height: 13px;
+    background-color: #f6f5f0;
+    top: 50%;
+    left: 20px;
+    transform: rotateZ(45deg) translate(-50%, 0);
+    transform-origin: 0 0;
+    border-radius: 4px;
+
+    @at-root .active & {
+      background-color: #292929;
+      width: 6px;
+      transform: rotateZ(45deg) translate(-50%, 25px);
+    }
+  }
+
+  @at-root .processing & {
+    transform-origin: 50%;
+    animation: spinner 0.3s linear infinite;
+    animation-delay: 0.5s;
+  }
+
+  @at-root .active & {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotateZ(45deg);
+  }
+  100% {
+    transform: rotateZ(405deg);
+  }
+}
+  
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  height: 30%;
+  border: 1px solid #888;
+  width: 15%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style for labels and buttons */
+label.upload-label {
+  font-weight: bold;
+  font-size: 1.5em;
+  display: block; /* Make label and button block level elements */
+  margin: 20px; /* Center align */
+  color: rgb(36, 36, 96); /* Text color for label and button */
+}
+
+/* Style for input fields */
+input[type="file"], input[type="url"] {
+  display: block; /* Make input block level element */
+  margin: 10px auto 20px; /* Margin for top, auto for sides, larger margin for bottom */
+  text-align: center; /* Center align text in input */
+}
+
+/* Style for the submit button */
+button {
+  background-color: rgb(36, 36, 96); /* Background color for button */
+  color: white; /* Text color for button */
+  padding: 10px 20px; /* Padding inside button */
+  border: none; /* No border for button */
+  cursor: pointer; /* Cursor to pointer when hovering over button */
+  border-radius: 5px; /* Rounded corners for button */
+}
+
+button:hover {
+  background-color: darkblue; /* Darker background color on hover */
+}
